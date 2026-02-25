@@ -1,0 +1,55 @@
+import numpy as np
+
+# لتثبيت نفس القيم كل مرة (اختياري)
+np.random.seed(1)
+
+# --------------------------
+# Input Layer (Example)
+# --------------------------
+x1 = 0.05
+x2 = 0.10
+
+X = np.array([x1, x2])
+
+# --------------------------
+# Initialize Weights [-0.5 , 0.5]
+# --------------------------
+
+# Input → Hidden (2x2)
+W1 = np.random.uniform(-0.5, 0.5, (2, 2))
+
+# Hidden → Output (2x2)
+W2 = np.random.uniform(-0.5, 0.5, (2, 2))
+
+# --------------------------
+# Bias values
+# --------------------------
+b1 = 0.5
+b2 = 0.7
+
+# --------------------------
+# Activation Function (tanh)
+# --------------------------
+def tanh(x):
+    return np.tanh(x)
+
+# --------------------------
+# Forward Pass
+# --------------------------
+
+# Hidden Layer
+net_h = np.dot(X, W1) + b1
+out_h = tanh(net_h)
+
+# Output Layer
+net_o = np.dot(out_h, W2) + b2
+out_o = tanh(net_o)
+
+# --------------------------
+# Print Results
+# --------------------------
+print("W1 =\n", W1)
+print("\nW2 =\n", W2)
+
+print("\nHidden Layer Output = ", out_h)
+print("\nFinal Network Output = ", out_o)
